@@ -7,6 +7,13 @@
 var cookieStorage = {},
     doc = window.document;
 
+
+//抄来的去前后空白符
+String.prototype.trim = function() {
+    return this.replace(/^\s\s*/, '').replace(/\s\s*$/, '');
+}
+
+
 cookieStorage.cookies = (function(){
 
     var n, v,
@@ -16,7 +23,7 @@ cookieStorage.cookies = (function(){
 
     lists.forEach(function(item){
         v = item.substr(item.indexOf("=")+1);
-        n = item.substr(0,item.indexOf("="));
+        n = item.substr(0,item.indexOf("=")).trim();
         cookies[n] = v;
     })
 
@@ -35,7 +42,7 @@ cookieStorage.getItem = function(key){
 cookieStorage.removeItem = function(key){
    if(! key in this.cookies) return;
     delete this.cookies[key];
-    doc.cookie = key + "expires; =0";
+    doc.cookie = key + "=;expires=0";
 }
 
 cookieStorage.setItem = function(name,value,options){
@@ -77,7 +84,7 @@ cookieStorage.clear = function(){
 
     lists.forEach(function(item){
         n = item.substr(0,item.indexOf("="));
-        document.cookie = n + "expires; =0";
+        document.cookie = n + "=;expires=0";
     })
 }
 

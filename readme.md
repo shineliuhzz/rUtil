@@ -20,3 +20,4 @@
 
 - date
 - store
+- cookieStorage
