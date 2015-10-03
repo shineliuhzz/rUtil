@@ -77,15 +77,13 @@ cookieStorage.setItem = function(name,value,options){
 
 cookieStorage.clear = function(){
 
-    var n,
-        lists = doc.cookie.split(";");
+    var n;
+
+    for(var key in this.cookie){
+        document.cookie = key + "=;expires=0";
+    }
 
     this.cookies = {};
-
-    lists.forEach(function(item){
-        n = item.substr(0,item.indexOf("="));
-        document.cookie = n + "=;expires=0";
-    })
 }
 
 module.exports = cookieStorage

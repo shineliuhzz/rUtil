@@ -9,6 +9,7 @@ window.RU = window.RU||{};
 var cookieStorage = {},
     doc = window.document;
 
+
 //抄来的去前后空白符
 String.prototype.trim = function() {
     return this.replace(/^\s\s*/, '').replace(/\s\s*$/, '');
@@ -78,15 +79,13 @@ cookieStorage.setItem = function(name,value,options){
 
 cookieStorage.clear = function(){
 
-    var n,
-        lists = doc.cookie.split(";");
+    var n;
+
+    for(var key in this.cookie){
+        document.cookie = key + "=;expires=0";
+    }
 
     this.cookies = {};
-
-    lists.forEach(function(item){
-        n = item.substr(0,item.indexOf("="));
-        document.cookie = n + "=;expires=0";
-    })
 }
 
 window.RU.cookieStorage = cookieStorage
