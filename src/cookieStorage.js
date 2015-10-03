@@ -77,8 +77,6 @@ cookieStorage.setItem = function(name,value,options){
 
 cookieStorage.clear = function(){
 
-    var n;
-
     for(var key in this.cookie){
         document.cookie = key + "=;expires=0";
     }
