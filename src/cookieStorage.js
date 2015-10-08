@@ -8,11 +8,6 @@ var cookieStorage = {},
     doc = window.document;
 
 
-//抄来的去前后空白符
-String.prototype.trim = function() {
-    return this.replace(/^\s\s*/, '').replace(/\s\s*$/, '');
-}
-
 
 cookieStorage.cookies = (function(){
 
